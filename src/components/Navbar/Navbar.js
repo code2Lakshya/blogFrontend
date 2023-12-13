@@ -1,6 +1,6 @@
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import imgSrc from '../../assets/logo.png';
+import imgSrc from '../../assets/logo2.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaFacebookF, FaGithubAlt } from "react-icons/fa";
 import { FaTwitter, FaInstagram } from "react-icons/fa6";

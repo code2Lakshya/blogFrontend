@@ -59,7 +59,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
+    padding: 15px 0;
 }
 
 .nav-left {
@@ -69,7 +69,7 @@ nav {
 
 .nav-left .lazy-load-image-background {
     width: 193px;
-    height: 50px;
+    height: 40px;
 }
 
 .lazy-load-image-background img {
@@ -206,12 +206,7 @@ nav {
         width: 133px;
         height: 40px;
     }
-    #nav-list {
-        transform: translateY(60px) scaleY(0);
-    }
-    #nav-list.active{
-        transform: translateY(60px) scaleY(1);
-    }
+   
     .login-container button {
         width: 70px;
         height: 35px;
