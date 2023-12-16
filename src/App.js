@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { checkToken } from "./utils/checkToken";
 import { setLoggedIn, setUserDetails } from "./utils/redux/slices/userSlice";
+import HomePage from "./page/HomePage/HomePage";
+import Footer from "./components/Footer/Footer";
 
 
 function App() {
@@ -22,7 +24,7 @@ const dispatch = useDispatch();
     <div>
       <Navbar />
       <Routes>
-        <Route path='/' element={<p>Home Page</p>} />
+        <Route path='/' element={<HomePage />} />
         <Route path='/blog/:blogId' element={<p>Single Blog Page</p>} />
         <Route path='/profile' element={<p> Profile Page</p>} />
         <Route path='/create' element={<p>Create Blog</p>} />
@@ -34,7 +36,7 @@ const dispatch = useDispatch();
         <Route path='/singup' element={<p>Signup Page</p>}/>
         <Route path='*' element={<p>Error Page</p>} />
       </Routes>
-      <p>Footer</p>
+      <Footer />
     </div>
   );
 }

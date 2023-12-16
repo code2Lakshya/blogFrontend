@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 import { MdMenu } from "react-icons/md";
 import { useState } from 'react';
 import { IoClose } from "react-icons/io5";
+import demoUserImg from '../../assets/demo user.png';
 
 
 const Navbar = () => {
@@ -76,7 +77,7 @@ const Navbar = () => {
                                 </div>
                                 :
                                 <div className='user-details' onClick={() => navigate('/profile')}>
-                                    <LazyLoadImage src={imgSrc} alt={userDetails?.username} effect='blur' />
+                                    <LazyLoadImage src={userDetails?.profile_pic || demoUserImg } alt={userDetails?.username} effect='blur' />
                                     <h3>{userDetails?.username}</h3>
                                 </div>
                         }

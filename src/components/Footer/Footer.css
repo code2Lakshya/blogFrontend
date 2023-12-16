@@ -1,0 +1,33 @@
+footer{
+    background-color: #1f2024;
+    padding: 20px 30px;
+}
+.footer-wrapper{
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+.footer-wrapper p{
+    font-size: 13px;
+    font-weight: 600;
+}
+.footer-wrapper p span{
+    color: var(--bg-color);
+}
+.footer-wrapper ul{
+    display: flex;
+    gap:20px;
+    list-style: none;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+.footer-wrapper a{
+    text-decoration: none;
+    color: inherit;
+}
+@media screen and (max-width: 600px) {
+    .footer-wrapper{
+        flex-direction: column;
+        gap:12px;
+    }
+}

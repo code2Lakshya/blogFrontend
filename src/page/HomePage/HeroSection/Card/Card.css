@@ -1,0 +1,114 @@
+.card-container{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    border-radius: 15px;
+    overflow: hidden;
+    padding: 15px 20px;
+    z-index: 0;
+    cursor: pointer;
+}
+.card-container::before{
+    position: absolute;
+    content:'';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: rgba(0, 0, 0,0.25);
+    transition: background-color 0.3s;
+}
+.card-container:hover::before{
+    background-color: rgba(0,0,0,0.4);
+}
+.card-container  > .lazy-load-image-background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+.card-container > .lazy-load-image-background img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s !important;
+}
+.card-container:hover > .lazy-load-image-background img{
+    transform: scale(1.02);
+}
+.card-detail{
+    position: relative;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    z-index: 3;
+    width: 100%;
+}
+.card-detail > span{
+    font-size: 10px;
+    background-color: var(--bg-color);
+    width: max-content;
+    text-transform: uppercase;
+    padding: 0 6px;
+    font-weight: 700;
+    line-height: 18px;
+    border-radius: 5px;
+    margin-bottom: 6px;
+}
+.card-detail h2{
+    font-family: var(--font-poppins);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5em;
+    margin-bottom: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.card-details{
+    display: flex;
+    align-items: center;
+}
+.card-details p{
+    display: flex;
+    align-items: center;
+    font-size: 11px;
+    text-transform: capitalize;
+    line-height: 1.5em;
+}
+.card-details p > span:nth-child(1){
+    display: flex;
+    align-items: center;
+    margin-right: 3px;
+    color: white;
+    font-size: 14px;
+}
+.card-details p:nth-child(1) span:nth-child(2){
+    margin-right: 8px;
+    font-weight: 700;
+    color: rgba(255, 255, 255,0.7)
+}
+.card-details p:nth-child(1) span:nth-child(1){
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.card-details p span .lazy-load-image-background{
+    width: 100%;
+    height: 100%;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+.card-details .lazy-load-image-background img{
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
