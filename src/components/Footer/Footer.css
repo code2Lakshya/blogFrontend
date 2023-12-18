@@ -24,6 +24,10 @@ footer{
 .footer-wrapper a{
     text-decoration: none;
     color: inherit;
+    transition: color 0.3s;
+}
+.footer-wrapper a:hover{
+    color: red;
 }
 @media screen and (max-width: 600px) {
     .footer-wrapper{

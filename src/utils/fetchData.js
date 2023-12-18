@@ -3,15 +3,15 @@
 
 export const fetchData = async (url, obj = null) => {
     try {
-        let response;
+        let responsee;
         if (!obj)
-            response = await fetch(process.env.REACT_APP_BASE_URL + url);
+            responsee = await fetch(process.env.REACT_APP_BASE_URL + url);
         else
-            response = await fetch(process.env.REACT_APP_BASE_URL + url, obj);
-        const res = await response.json();
+            responsee = await fetch(process.env.REACT_APP_BASE_URL + url, obj);
+        const res = await responsee.json();
         return res.response;
     }
     catch (error) {
-        console.log(error.message);
+        return Promise.reject(error.message);
     }
 }

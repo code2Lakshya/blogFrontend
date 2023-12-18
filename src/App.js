@@ -25,7 +25,8 @@ const dispatch = useDispatch();
       <Navbar />
       <Routes>
         <Route path='/' element={<HomePage />} />
-        <Route path='/blog/:blogId' element={<p>Single Blog Page</p>} />
+        <Route path='/post/:postId' element={<p>Single Blog Page</p>} />
+        <Route path='/user/:userId' element={<p>User Page</p>} />
         <Route path='/profile' element={<p> Profile Page</p>} />
         <Route path='/create' element={<p>Create Blog</p>} />
         <Route path='/user/:userId' element={<p>User Page</p>} />

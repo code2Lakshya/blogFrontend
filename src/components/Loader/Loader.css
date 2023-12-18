@@ -1,0 +1,22 @@
+.loader-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+}
+.loader-container > p{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border-bottom: 2px solid var(--bg-color);
+    border-left: 2px solid var(--bg-color);
+    animation: loader 2s linear infinite;
+}
+@keyframes loader{
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}

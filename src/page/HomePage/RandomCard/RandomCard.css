@@ -1,0 +1,11 @@
+.random-card-container{
+    padding: 10px 0 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.random-card-container > h2{
+    font-size: 30px;
+    line-height: 1.4em;
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+}

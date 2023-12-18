@@ -1,0 +1,124 @@
+.common-card {
+    width: 100%;
+    position: relative;
+    z-index: 0;
+}
+
+.common-card-image {
+    position: relative;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.common-card-image .lazy-load-image-background {
+    width: 100%;
+    height: 100%;
+}
+
+.common-card-image > .lazy-load-image-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.9);
+    -webkit-filter: brightness(0.9);
+    transition: all 0.3s !important;
+}
+.common-card-image:hover > .lazy-load-image-background img{
+    filter: brightness(0.7);
+    -webkit-filter: brightness(0.7);
+    transform: scale(1.01);
+}
+.common-card-image span:nth-child(2) {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1;
+    background-color: white;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 28px;
+    padding: 0 13px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.common-card-image span:nth-child(2):hover {
+    background-color: var(--bg-color);
+    color: white;
+}
+
+.common-card-details h2 {
+    font-size: 25px;
+    font-family: var(--font-poppins);
+    line-height: 1.5em;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+    transition: color 0.3s;
+    cursor: pointer;
+    overflow-wrap: break-word;
+}
+.common-card-details h2:hover{
+    color: var(--bg-color);
+}
+
+.common-card-details .card-detailss {
+    display: flex;
+    align-items: center;
+}
+
+.common-card-details .card-detailss p {
+    display: flex;
+    align-items: center;
+    font-size: 11px;
+    text-transform: capitalize;
+    line-height: 1.5em;
+    color: grey;
+}
+
+.common-card-details .card-detailss p>span:nth-child(1) {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+.card-detailss span:nth-child(2) {
+    margin-right: 13px;
+    font-weight: 700;
+}
+
+.card-detailss p:nth-child(1) span:nth-child(1) {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.card-detailss p span .lazy-load-image-background {
+    width: 100%;
+    height: 100%;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-detailss .lazy-load-image-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.card-detailss p:nth-child(1){
+    cursor: pointer;
+}
+.card-detailss p:nth-child(1):hover{
+    color: var(--bg-color);
+}
+.common-card-details > p{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4em;
+    color: grey;
+    margin-top: 10px;
+}

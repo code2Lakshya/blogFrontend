@@ -60,6 +60,11 @@
     line-height: 18px;
     border-radius: 5px;
     margin-bottom: 6px;
+    transition: all 0.3s;
+}
+.card-detail > span:hover{
+    color: black;
+    background-color: white;
 }
 .card-detail h2{
     font-family: var(--font-poppins);
@@ -85,12 +90,12 @@
 .card-details p > span:nth-child(1){
     display: flex;
     align-items: center;
-    margin-right: 3px;
+    margin-right: 5px;
     color: white;
     font-size: 14px;
 }
 .card-details p:nth-child(1) span:nth-child(2){
-    margin-right: 8px;
+    margin-right: 12px;
     font-weight: 700;
     color: rgba(255, 255, 255,0.7)
 }

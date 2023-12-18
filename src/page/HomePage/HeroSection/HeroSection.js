@@ -3,6 +3,7 @@ import { fetchData } from '../../../utils/fetchData';
 import Wrapper from "../../../components/Wrapper/Wrapper";
 import Card from "./Card/Card";
 import './HeroSection.css';
+import Loader from "../../../components/Loader/Loader";
 
 const HeroSection = () => {
 
@@ -10,9 +11,10 @@ const HeroSection = () => {
     const [loader, setLoader] = useState(false);
 
     useEffect(() => {
-        fetchData('/allposts')
+        setLoader(true);
+        fetchData('/fixed?limit=5')
             .then(response => {
-                setData(response.splice(0, 5));
+                setData(response.posts);
                 setLoader(false);
             })
             .catch(error => {
@@ -21,17 +23,16 @@ const HeroSection = () => {
             });
     }, [])
 
-    console.log(data);
 
     return (
         <div className="hero-section-container">
             <Wrapper className='hero-section-wrapper'>
                 {
                     loader ?
-                        <p>Loader</p>
+                        <Loader />
                         :
                         !data ?
-                            <p></p>
+                            <p style={{textAlign: 'center'}}>No Data Found ...</p>
                             :
                             <div className="hero-section-cards">
                                 <div className="hero-large-card">
@@ -39,7 +40,9 @@ const HeroSection = () => {
                                 </div>
                                 <div className="hero-small-card">
                                     {
-                                        data.splice(1, 4).map((item) => <Card data={item} key={item._id} />)
+                                        data
+                                            .filter((item, index) => index !== 0)
+                                            .map((item) => <Card data={item} key={item._id} />)
                                     }
                                 </div>
                             </div>
