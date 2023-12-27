@@ -1,15 +1,18 @@
 
 
 
-export const fetchData = async (url, obj = null) => {
+export const fetchData = async (url, obj = null, form = false) => {
     try {
-        let responsee;
+        let output;
         if (!obj)
-            responsee = await fetch(process.env.REACT_APP_BASE_URL + url);
+            output = await fetch(process.env.REACT_APP_BASE_URL + url);
         else
-            responsee = await fetch(process.env.REACT_APP_BASE_URL + url, obj);
-        const res = await responsee.json();
-        return res.response;
+            output = await fetch(process.env.REACT_APP_BASE_URL + url, obj);
+        const res = await output.json();
+        if (!form)
+            return res.response;
+        else
+            return res;
     }
     catch (error) {
         return Promise.reject(error.message);

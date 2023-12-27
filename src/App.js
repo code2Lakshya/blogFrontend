@@ -6,6 +6,8 @@ import { checkToken } from "./utils/checkToken";
 import { setLoggedIn, setUserDetails } from "./utils/redux/slices/userSlice";
 import HomePage from "./page/HomePage/HomePage";
 import Footer from "./components/Footer/Footer";
+import SignupPage from "./page/SignupPage/SignupPage";
+import LoginPage from "./page/LoginPage";
 
 
 function App() {
@@ -25,7 +27,9 @@ const dispatch = useDispatch();
       <Navbar />
       <Routes>
         <Route path='/' element={<HomePage />} />
+        <Route path='/signup' element={<SignupPage />}/>
         <Route path='/post/:postId' element={<p>Single Blog Page</p>} />
+        <Route path='/category/:categoryId' element={<p>Category Page</p>}/>
         <Route path='/user/:userId' element={<p>User Page</p>} />
         <Route path='/profile' element={<p> Profile Page</p>} />
         <Route path='/create' element={<p>Create Blog</p>} />
@@ -33,8 +37,7 @@ const dispatch = useDispatch();
         <Route path='/blogs' element={<p>All Blog Page</p>} />
         <Route path='/about' element={<p>About Page</p>} />
         <Route path='/contact' element={<p>Contact Page</p>} />
-        <Route path='/login' element={<p>Login Page</p>}/>
-        <Route path='/singup' element={<p>Signup Page</p>}/>
+        <Route path='/login' element={<LoginPage />}/>
         <Route path='*' element={<p>Error Page</p>} />
       </Routes>
       <Footer />

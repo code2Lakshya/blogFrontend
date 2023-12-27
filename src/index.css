@@ -16,3 +16,7 @@
 body{
   font-family: var(--font-open-sans);
 }
+.noData{
+  font-size: 12px;
+  margin-top: 10px;
+}

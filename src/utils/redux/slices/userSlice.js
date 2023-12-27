@@ -11,9 +11,9 @@ export const userSlice=createSlice({
     initialState,
     reducers:{
         setLoggedIn: (state,action)=>{
-            if(action.payload==='false'){
+            if(!action.payload){
                 state.loggedIn=false;
-                state.userdetails=null;
+                state.userDetails=null;
             }
             else{
                 state.loggedIn=true;

@@ -23,6 +23,9 @@
 }
 .home-sticky-container{
     width: 30%;
+    position: sticky;
+    top: 20px;
+    height: max-content;
 }
 @media screen and (max-width: 1000px) {
     .home-random-container .common-card-image{
@@ -41,6 +44,9 @@
         height: unset;
         aspect-ratio: unset;
         height: 456px;
+    }
+    .home-sticky-container{
+        width: 100%;
     }
 }
 @media screen and (max-width: 560px){

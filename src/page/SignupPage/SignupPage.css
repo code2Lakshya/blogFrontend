@@ -1,0 +1,110 @@
+.signup-page{
+    width: 100%;
+    padding: 20px 30px;
+    background-color: rgb(226, 225, 225);
+}
+.signup-wrapper{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    background-color: white;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0px 0px 30px 2px rgb(34, 33, 33);
+}
+.signup-form{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    padding: 40px 30px;
+}
+.signup-form h3{
+    font-size: 30px;
+    font-weight: 800;
+}
+.signup-form > p:nth-child(2){
+    font-size: 14px;
+    margin-bottom: 30px;
+    margin-top: 5px;
+}
+.signup-form > p:nth-child(2) a{
+    color: red;
+    margin-left: 4px;
+}
+.signup-design{
+    width: 50%;
+    position:relative;
+    background-color: var(--bg-color);
+    z-index: 0;
+    min-height: 300px;
+    display: flex;
+}
+.signup-design .lazy-load-image-background{
+    align-self: flex-end;
+}
+.signup{
+    width: 100%;
+    max-width: 400px;
+}
+.or{
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    margin-block: 20px;
+}
+.or::before,
+.or::after{
+    content:'';
+    position: absolute;
+    top:50%;
+    width: calc(50% - 17px);
+    height: 1px;
+    background-color: rgb(185, 183, 183);
+}
+.or::after{
+    left: 0;
+}
+.or::before{
+    right: 0;
+}
+.signup-btn{
+    width: max-content !important;
+}
+@media screen and (max-width: 950px){
+    .signup-design .lazy-load-image-background{
+        align-self: center;
+    }
+}
+@media screen and (max-width: 800px){
+    .signup-wrapper{
+        flex-direction: column;
+    }
+    .signup-form{
+        width: 100%;
+    }
+    .signup-form .signup{
+        max-width: 550px;
+    }
+    .signup-design{
+        width: 100%;
+        height: 400px;
+        min-height: unset;
+        display: flex;
+        justify-content: center;
+    }
+    .signup-design .lazy-load-image-background{
+        width: 100%;
+        height: 100%;
+        max-width: 500px;
+    }
+}
+@media screen and (max-width: 550px){
+    .signup-design{
+        display: none;
+    }
+}

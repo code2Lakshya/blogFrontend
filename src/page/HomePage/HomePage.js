@@ -61,7 +61,7 @@ const HomePage = () => {
                             changePage={changePage}
                         />
                     </div>
-                   <Sidebar />
+                   <Sidebar className='home-sticky-container'/>
                 </Wrapper>
             </div>
         </div>
