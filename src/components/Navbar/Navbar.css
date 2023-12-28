@@ -1,7 +1,8 @@
-header{
+header {
     position: relative;
     z-index: 10;
 }
+
 .banner {
     background-color: var(--bg-color);
     padding: 0 20px;
@@ -91,6 +92,7 @@ nav {
 
 #nav-list a {
     font-size: 14px;
+    display: flex;
     text-decoration: none;
     color: inherit;
     font-weight: 600;
@@ -104,6 +106,7 @@ nav {
 .login-container {
     display: flex;
     gap: 20px;
+    user-select: none;
 }
 
 .login-container button {
@@ -142,6 +145,8 @@ nav {
     align-items: center;
     gap: 8px;
     cursor: pointer;
+    transition: color 0.3s;
+    position: relative;
 }
 
 .user-details .lazy-load-image-background {
@@ -161,6 +166,49 @@ nav {
 #menu {
     display: none;
     font-size: 30px;
+}
+
+.user-details span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-details:hover {
+    color: var(--bg-color);
+}
+
+.user-details ul {
+    position: absolute;
+    right: 0;
+    bottom: -15px;
+    list-style: none;
+    background-color: rgb(31, 32, 36);
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 10px;
+    transform: translateY(100%) scaleY(0);
+    transform-origin: top;
+    opacity: 0;
+    transition: all 0.3s;
+    border-radius: 5px;
+}
+.user-details ul.active{
+    transform:  translateY(100%) scaleY(1);
+    opacity: 1;
+}
+.user-details ul li{
+    padding: 7px 20px;
+    border-bottom: 1px solid rgb(65, 64, 64);
+    transition: color 0.3s;
+    cursor: pointer;
+    display: flex;
+    gap:5px;
+    align-items: center;
+}
+.user-details ul li:hover{
+    color: var(--bg-color);
 }
 
 @media screen and (max-width: 900px) {
@@ -210,18 +258,19 @@ nav {
         width: 133px;
         height: 40px;
     }
-   
+
     .login-container button {
         width: 70px;
         height: 35px;
     }
 
-    .user-details h3{
+    .user-details h3 {
         display: none;
     }
 }
-@media screen  and (max-width: 460px){
-    .login-container button:nth-child(2){
+
+@media screen and (max-width: 460px) {
+    .login-container button:nth-child(1) {
         display: none;
     }
 }

@@ -12,17 +12,17 @@ const SignupPage = () => {
         <div className="signup-page">
             <div className='signup-wrapper'>
                 <div className='signup-form'>
-                    <h3>Signup</h3>
+                    <h3>Signup </h3>
                     <p>
                         Have A Account ?
                         <Link to='/login'>Login</Link>
                     </p>
                     <Form className='signup' type='signup' />
                     <p className='or'>or</p>
-                    <GoogleAuthBtn className='signup-btn'/>
+                    <GoogleAuthBtn className='signup-btn' />
                 </div>
                 <div className='signup-design'>
-                        <LazyLoadImage src={img1} alt='signup' effect='blur' />
+                    <LazyLoadImage src={img1} alt='signup' effect='blur' />
                 </div>
             </div>
         </div>

@@ -94,19 +94,6 @@ const Form = ({ className, type }) => {
                 {
                     type === 'signup' &&
                     <div className="form-field">
-                        <label htmlFor="img">Profile Picture / Optinal:</label>
-                        <input
-                            type='file'
-                            value={formDetails.file}
-                            name='img'
-                            onChange={changeHandler}
-                            id='img'
-                        />
-                    </div>
-                }
-                {
-                    type === 'signup' &&
-                    <div className="form-field">
                         <label htmlFor="username">username:</label>
                         <input
                             type='text'
@@ -155,23 +142,31 @@ const Form = ({ className, type }) => {
                     </div>
                 </div>
                 {
-                    type === 'signup'
-                        ?
-                        <button type='submit' onClick={submitHandler}>
-                            {
-                                loader ? <Loader />
-                                    :
-                                    'Signup Now'
-                            }
-                        </button>
+                    type === 'signup' &&
+                    <div className="form-field profile-field">
+                        <label htmlFor="img">Profile Picture / Optinal:</label>
+                        <input
+                            type='file'
+                            value={formDetails.file}
+                            name='img'
+                            onChange={changeHandler}
+                            id='img'
+                        />
+                    </div>
+                }
+                {
+                    loader ?
+                        <Loader className='form-loader' />
                         :
-                        <button type='submit' onClick={submitHandler}>
-                            {
-                                loader ? <Loader />
-                                    :
-                                    'Login Now'
-                            }
-                        </button>
+                        type === 'signup'
+                            ?
+                            <button type='submit' onClick={submitHandler}>
+                                Signup Now
+                            </button>
+                            :
+                            <button type='submit' onClick={submitHandler}>
+                                Login Now
+                            </button>
                 }
             </form>
         </div>

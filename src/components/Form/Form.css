@@ -30,6 +30,18 @@
     border-radius: 10px;
     border: 1px solid grey;
 }
+.profile-field input{
+    padding: 10px;
+    border: 1px solid grey;
+    cursor: pointer;
+}
+input[type=file]::-webkit-file-upload-button{
+    background-color: transparent;
+    border: 1px solid grey;
+    padding: 3px 6px;
+    font-size: 14px;
+    border-radius: 3px;
+}
 #password{
     width: 100%;
     position: relative;
@@ -51,7 +63,7 @@
     color: white;
     background-color: var(--bg-color);
     border: 1px solid var(--bg-color);
-    padding: 12px;
+    padding: 13px;
     margin-top: 10px;
     text-transform: uppercase;
     border-radius: 10px;
@@ -61,4 +73,13 @@
 .form button:hover{
     background-color: transparent;
     color: var(--bg-color);
+}
+.form-loader{
+    border: 1px solid var(--bg-color);
+    padding: 7.5px;
+    border-radius: 10px;
+    background-color: var(--bg-color);
+}
+.form-loader p{
+    border-color: white;
 }

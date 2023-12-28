@@ -7,7 +7,7 @@ import { setLoggedIn, setUserDetails } from "./utils/redux/slices/userSlice";
 import HomePage from "./page/HomePage/HomePage";
 import Footer from "./components/Footer/Footer";
 import SignupPage from "./page/SignupPage/SignupPage";
-import LoginPage from "./page/LoginPage";
+import LoginPage from "./page/LoginPage/LoginPage";
 
 
 function App() {

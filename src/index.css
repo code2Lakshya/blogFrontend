@@ -20,3 +20,25 @@ body{
   font-size: 12px;
   margin-top: 10px;
 }
+.or{
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+  margin-block: 20px;
+}
+.or::before,
+.or::after{
+  content:'';
+  position: absolute;
+  top:50%;
+  width: calc(50% - 17px);
+  height: 1px;
+  background-color: rgb(185, 183, 183);
+}
+.or::after{
+  left: 0;
+}
+.or::before{
+  right: 0;
+}

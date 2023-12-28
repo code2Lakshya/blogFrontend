@@ -13,6 +13,10 @@ import { IoClose } from "react-icons/io5";
 import demoUserImg from '../../assets/demo user.png';
 import { changeLocalStorage } from '../../utils/checkToken';
 import { setLoggedIn, setUserDetails } from '../../utils/redux/slices/userSlice';
+import { IoMdArrowDropdown, IoIosLogOut } from "react-icons/io";
+import { RiProfileLine } from "react-icons/ri";
+import toast from 'react-hot-toast';
+
 
 
 const Navbar = () => {
@@ -20,12 +24,26 @@ const Navbar = () => {
     const { userDetails, loggedIn } = useSelector(store => store.user);
     const navigate = useNavigate();
     const [showMenu, setShowMenu] = useState(false);
-    const dispatch=useDispatch();
+    const dispatch = useDispatch();
+    const [profileList, setProfileList] = useState(false);
 
-    const logoutHandler=()=>{
+    const logoutHandler = (e) => {
+        e.stopPropagation();
         changeLocalStorage('remove');
         dispatch(setLoggedIn(false));
         dispatch(setUserDetails(null));
+        setAllFalse();
+        toast.success('Logged Out');
+        navigate('/');
+    }
+    const clickHandler = (e) => {
+        e.stopPropagation();
+        setAllFalse();
+        navigate('/profile');
+    }
+    function setAllFalse() {
+        setShowMenu(false);
+        setProfileList(false);
     }
 
     return (
@@ -72,9 +90,9 @@ const Navbar = () => {
                         </p>
                         <Link to='/'><LazyLoadImage src={imgSrc} alt='luminous' effect='blur' /></Link>
                         <ul id='nav-list' className={showMenu ? 'active' : ''}>
-                            <li><Link to='/'>Home</Link></li>
-                            <li><Link to='/blogs'>Blogs</Link></li>
-                            <li><Link to='/create'>Post Now</Link></li>
+                            <li onClick={setAllFalse}><Link to='/'>Home</Link></li>
+                            <li onClick={setAllFalse}><Link to='/blogs'>Blogs</Link></li>
+                            <li onClick={setAllFalse}><Link to='/create'>Post Now</Link></li>
                         </ul>
                     </div>
                     <div className='nav-right'>
@@ -86,11 +104,15 @@ const Navbar = () => {
                                 </div>
                                 :
                                 <div className='login-container'>
-                                    <div className='user-details' onClick={() => navigate('/profile')}>
+                                    <div className='user-details' onClick={() => setProfileList(prev => !prev)}>
                                         <LazyLoadImage src={userDetails?.profile_pic || demoUserImg} alt={userDetails?.username} effect='blur' />
                                         <h3>{userDetails?.username}</h3>
+                                        <span><IoMdArrowDropdown /></span>
+                                        <ul className={profileList ? 'active' : ''}>
+                                            <li onClick={clickHandler}>Profile<RiProfileLine /></li>
+                                            <li onClick={logoutHandler}>Logout<IoIosLogOut /></li>
+                                        </ul>
                                     </div>
-                                    <button onClick={logoutHandler} style={{display: 'inline-block'}}>Logout</button>
                                 </div>
                         }
                     </div>
