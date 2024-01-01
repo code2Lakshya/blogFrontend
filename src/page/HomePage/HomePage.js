@@ -21,8 +21,8 @@ const HomePage = () => {
         page === 1 ? setLoader(true) : setInfiniteLoader(true);
         fetchData(`/fixed?page=${page}&skip=5`)
             .then(response => {
-                setData(prev => prev ? ([...prev, ...response.posts]) : response.posts);
-                setTotalPage(response.totalPage);
+                setData(prev => prev ? ([...prev, ...response?.posts]) : response?.posts);
+                setTotalPage(response?.totalPage);
                 setLoader(false);
                 setInfiniteLoader(false);
             })

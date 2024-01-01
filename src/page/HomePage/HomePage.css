@@ -1,6 +1,7 @@
 .home-main-container{
     width: 100%;
     padding: 30px 30px;
+    min-height: 92vh;
 }
 .home-main-wrapper{
     display: flex;

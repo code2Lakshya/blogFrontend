@@ -12,6 +12,10 @@ export const changeLocalStorage = (task, payload = null) => {
     }
     else {
         localStorage.setItem('token', payload.token);
-        localStorage.setItem('user', JSON.stringify({username: payload.username, profile_pic: payload.profile_pic}));
+        localStorage.setItem('user', JSON.stringify({
+            username: payload.username,
+            profile_pic: payload.profile_pic,
+            _id: payload._id
+        }));
     }
 }
