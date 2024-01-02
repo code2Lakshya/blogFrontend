@@ -20,17 +20,19 @@ import demoUser from '../../assets/demo user.png';
 import CommentOnLoggedin, { CommentOnLoggedout } from "./Comments/Comments";
 import ProtectedComponents from "../../components/ProtectedComponents/ProtectedComponents";
 import './SingleBlogPage.css';
-import { AiOutlineLike,AiOutlineDislike } from "react-icons/ai";
+import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
+import { useScrollToTop } from "../../utils/hooks/useScrollToTop";
 
 const SingleBlogPage = () => {
 
-    const { data, loader, fetchResponse, similarPosts,setData } = useFetch(true);
+    const { data, loader, fetchResponse, similarPosts, setData } = useFetch(true);
     const { postId } = useParams();
     const { loggedIn, userDetails } = useSelector(store => store.user);
     const [deleteMessage, setDeleteMessage] = useState(false);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    useScrollToTop();
 
     useEffect(() => {
         fetchResponse(`/post/${postId}`);
@@ -69,7 +71,7 @@ const SingleBlogPage = () => {
             .then(response => {
                 if (response.success) {
                     toast.success('Post Successfully Liked!');
-                   setData(prev => ({...prev , likes: [...prev.likes, response.response]}));
+                    setData(prev => ({ ...prev, likes: [...prev.likes, response.response] }));
                 }
                 else {
                     console.log(response.message);
@@ -83,7 +85,7 @@ const SingleBlogPage = () => {
             .catch((error) => console.log(error))
     }
 
-    const dislikeHandler =()=>{
+    const dislikeHandler = () => {
         fetchData(`/unlikepost?postId=${postId}`, {
             method: 'PUT',
             headers: {
@@ -93,8 +95,8 @@ const SingleBlogPage = () => {
             .then(response => {
                 if (response.success) {
                     setData(prev => {
-                        console.log(prev.likes.filter(item => item._id!==response.response._id));
-                       return {...prev , likes: prev.likes.filter(item => item._id!==response.response._id)}
+                        console.log(prev.likes.filter(item => item._id !== response.response._id));
+                        return { ...prev, likes: prev.likes.filter(item => item._id !== response.response._id) }
                     });
                     toast.success('Post Successfully Disliked!');
                 }
@@ -173,13 +175,13 @@ const SingleBlogPage = () => {
                     {loggedIn &&
                         <div className="single-blog-buttons">
                             {
-                                likes.findIndex(item => item.user===userDetails._id) === -1
+                                likes.findIndex(item => item.user === userDetails._id) === -1
                                     ?
                                     <button onClick={likeHandler}>Like <AiOutlineLike /></button>
                                     :
                                     <button onClick={dislikeHandler}>Dislike <AiOutlineDislike /></button>
                             }
-                            <button onClick={()=>setDeleteMessage(true)}>Delete <IoTrashBinOutline /></button>
+                            <button onClick={() => setDeleteMessage(true)}>Delete <IoTrashBinOutline /></button>
                         </div>
                     }
                     <div className="single-blog-user">
