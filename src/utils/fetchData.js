@@ -9,8 +9,9 @@ export const fetchData = async (url, obj = null, form = false) => {
         else
             output = await fetch(process.env.REACT_APP_BASE_URL + url, obj);
         const res = await output.json();
-        if (!form)
+        if (!form){
             return res.response;
+        }
         else
             return res;
     }

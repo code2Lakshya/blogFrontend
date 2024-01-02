@@ -8,7 +8,7 @@ export const useFetch = (other = false) => {
     const [loader, setLoader] = useState(false);
     const [similarPosts, setSimilarPosts] = useState(null);
 
-    const fetchResponse = async (url, obj = null, page = 0, skip = 0) => {
+    const fetchResponse = async (url, obj = null, page = 0, skip = 0, needresponse = false) => {
         try {
             let fetchurl = process.env.REACT_APP_BASE_URL + url;
             if (page)
@@ -22,6 +22,9 @@ export const useFetch = (other = false) => {
             else
                 response = await fetch(fetchurl);
             const res = await response.json();
+            if (needresponse) {
+                return res;
+            }
             if (!res.success)
                 throw new Error(res.message);
             if (other) {

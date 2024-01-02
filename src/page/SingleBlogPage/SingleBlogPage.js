@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import Wrapper from "../../components/Wrapper/Wrapper";
 import { useFetch } from "../../utils/hooks/useFetch";
 import Loader from "../../components/Loader/Loader";
@@ -17,6 +17,8 @@ import { IoTrashBinOutline } from "react-icons/io5";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import SimilarPosts from "./SimilarPosts/SimilarPosts";
 import demoUser from '../../assets/demo user.png';
+import CommentOnLoggedin, { CommentOnLoggedout } from "./Comments/Comments";
+import ProtectedComponents from "../../components/ProtectedComponents/ProtectedComponents";
 
 const SingleBlogPage = () => {
 
@@ -26,6 +28,7 @@ const SingleBlogPage = () => {
     const [deleteMessage, setDeleteMessage] = useState(false);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [change, setChange] = useState(false);
 
 
     useEffect(() => {
@@ -36,7 +39,7 @@ const SingleBlogPage = () => {
         fetchData(`/deletepost/${postId}`, {
             method: 'DELETE',
             headers: {
-                'Authorization': `Bearer ${localStorage.token}`
+                'Authorization': `Bearer ${userDetails.token}`
             }
         }, true)
             .then(response => {
@@ -51,6 +54,8 @@ const SingleBlogPage = () => {
                 }
             })
     }
+
+    const ProtectedComments = useMemo(() => ProtectedComponents(CommentOnLoggedin, CommentOnLoggedout), [loggedIn]);
 
     if (loader) {
         return <Loader className='full-page' />
@@ -132,13 +137,13 @@ const SingleBlogPage = () => {
                         similarPosts &&
                         <SimilarPosts className='single-blog-similar' data={similarPosts} />
                     }
-                    {
-                        
-                    }
+                    <ProtectedComments loggedIn={loggedIn} />
                 </div>
                 <Sidebar className="single-blog-sticky" />
+                <div onClick={() => setChange(prev => !prev)}>Chna</div>
             </Wrapper>
-            {deleteMessage &&
+            {
+                deleteMessage &&
                 <div className="delete-container">
                     <div className="delete-post">
                         <span onClick={() => setDeleteMessage(false)}>Cross</span>
