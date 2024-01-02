@@ -1,7 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import Wrapper from "../../../components/Wrapper/Wrapper";
 import { useEffect, useState } from "react";
-import { useFetch } from "../../../utils/hooks/useFetch";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchData } from "../../../utils/fetchData";
 import { sessionTimedOut } from "../../../utils/sessionTimedOut";
@@ -9,7 +8,7 @@ import { setLoggedIn } from "../../../utils/redux/slices/userSlice";
 import toast from "react-hot-toast";
 import Loader from "../../../components/Loader/Loader";
 import AddComment from "../AddComment/AddComment";
-
+import Comment from "./Comment/Comment";
 
 
 const CommentOnLoggedin = () => {
@@ -27,7 +26,7 @@ const CommentOnLoggedin = () => {
             headers: {
                 'Authorization': `Bearer ${userDetails.token}`
             }
-        },true)
+        }, true)
             .then(response => {
                 if (response.message.includes('Token')) {
                     sessionTimedOut(dispatch, setLoggedIn);
@@ -55,13 +54,17 @@ const CommentOnLoggedin = () => {
                     loader ?
                         <Loader />
                         :
-                        !data
-                            ?
-                            <p>0 Comments Found</p>
-                            :
-                            <div className="comments">
-                                <AddComment setData={setData} /> 
-                            </div>
+                        <div className="comments-container">
+                            <AddComment setData={setData} />
+                            {!data
+                                ?
+                                <p>0 Comments Found</p>
+                                :
+                                <div className="comments">
+                                    {data.map(item => <Comment data={item} key={item._id} />)}
+                                </div>
+                            }
+                        </div>
                 }
             </Wrapper>
         </div>

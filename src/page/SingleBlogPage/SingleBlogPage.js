@@ -19,16 +19,17 @@ import SimilarPosts from "./SimilarPosts/SimilarPosts";
 import demoUser from '../../assets/demo user.png';
 import CommentOnLoggedin, { CommentOnLoggedout } from "./Comments/Comments";
 import ProtectedComponents from "../../components/ProtectedComponents/ProtectedComponents";
+import './SingleBlogPage.css';
+import { AiOutlineLike,AiOutlineDislike } from "react-icons/ai";
 
 const SingleBlogPage = () => {
 
-    const { data, loader, fetchResponse, similarPosts, setSimilarPosts } = useFetch(true);
+    const { data, loader, fetchResponse, similarPosts,setData } = useFetch(true);
     const { postId } = useParams();
     const { loggedIn, userDetails } = useSelector(store => store.user);
     const [deleteMessage, setDeleteMessage] = useState(false);
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const [change, setChange] = useState(false);
 
 
     useEffect(() => {
@@ -49,10 +50,64 @@ const SingleBlogPage = () => {
                 }
                 else {
                     console.log(response.message);
-                    if (response.message.includes('Token'))
+                    if (response.message.includes('Token')) {
                         sessionTimedOut(dispatch, setLoggedIn);
+                        navigate('/');
+                        toast.error('Session Timed Out');
+                    }
                 }
             })
+            .catch((error) => console.log(error))
+    }
+
+    const likeHandler = () => {
+        fetchData(`/likepost?post=${postId}`, {
+            headers: {
+                'Authorization': `Bearer ${userDetails.token}`
+            }
+        }, true)
+            .then(response => {
+                if (response.success) {
+                    toast.success('Post Successfully Liked!');
+                   setData(prev => ({...prev , likes: [...prev.likes, response.response]}));
+                }
+                else {
+                    console.log(response.message);
+                    if (response.message.includes('Token')) {
+                        sessionTimedOut(dispatch, setLoggedIn);
+                        navigate('/');
+                        toast.error('Session Timed Out');
+                    }
+                }
+            })
+            .catch((error) => console.log(error))
+    }
+
+    const dislikeHandler =()=>{
+        fetchData(`/unlikepost?postId=${postId}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${userDetails.token}`
+            }
+        }, true)
+            .then(response => {
+                if (response.success) {
+                    setData(prev => {
+                        console.log(prev.likes.filter(item => item._id!==response.response._id));
+                       return {...prev , likes: prev.likes.filter(item => item._id!==response.response._id)}
+                    });
+                    toast.success('Post Successfully Disliked!');
+                }
+                else {
+                    console.log(response.message);
+                    if (response.message.includes('Token')) {
+                        sessionTimedOut(dispatch, setLoggedIn);
+                        navigate('/');
+                        toast.error('Session Timed Out');
+                    }
+                }
+            })
+            .catch((error) => console.log(error))
     }
 
     const ProtectedComments = useMemo(() => ProtectedComponents(CommentOnLoggedin, CommentOnLoggedout), [loggedIn]);
@@ -70,32 +125,21 @@ const SingleBlogPage = () => {
             </div>
         );
 
-    const { categories, title, user, createdAt, content, img_url } = data;
+    const { categories, title, user, createdAt, content, img_url, likes } = data;
     let date = new Date(createdAt);
     date = date.getDate() + ' ' + month[date.getMonth()] + ` ` + date.getFullYear();
+    console.log(data);
 
     return (
         <div className="single-blog-page">
             <Wrapper className='single-blog-wrapper'>
                 <div className="single-blog-content">
                     <div className="single-blog-heading">
-                        <div className="single-blog-left">
-                            <Link to='/'>Home</Link>
-                            <span> &#62;</span>
-                            <Link to={`/category/${categories[0]?._id}`}>
-                                {categories[0]?.category}
-                            </Link>
-                        </div>
-                        {
-                            loggedIn &&
-                            user._id === userDetails?._id &&
-                            <div className="single-blog-button">
-                                <button onClick={() => setDeleteMessage(true)}>
-                                    Delete Post
-                                    <IoTrashBinOutline />
-                                </button>
-                            </div>
-                        }
+                        <Link to='/'>Home</Link>
+                        <span> &#62;</span>
+                        <Link to={`/category/${categories[0]?._id}`}>
+                            {categories[0]?.category}
+                        </Link>
                     </div>
                     <div className="single-blog-detail">
                         <h3>{title}</h3>
@@ -126,6 +170,18 @@ const SingleBlogPage = () => {
                             }
                         </div>
                     </div>
+                    {loggedIn &&
+                        <div className="single-blog-buttons">
+                            {
+                                likes.findIndex(item => item.user===userDetails._id) === -1
+                                    ?
+                                    <button onClick={likeHandler}>Like <AiOutlineLike /></button>
+                                    :
+                                    <button onClick={dislikeHandler}>Dislike <AiOutlineDislike /></button>
+                            }
+                            <button onClick={()=>setDeleteMessage(true)}>Delete <IoTrashBinOutline /></button>
+                        </div>
+                    }
                     <div className="single-blog-user">
                         <LazyLoadImage src={user?.profile_pic || demoUser} alt={user.username} effect="blur" />
                         <p >
@@ -140,7 +196,6 @@ const SingleBlogPage = () => {
                     <ProtectedComments loggedIn={loggedIn} />
                 </div>
                 <Sidebar className="single-blog-sticky" />
-                <div onClick={() => setChange(prev => !prev)}>Chna</div>
             </Wrapper>
             {
                 deleteMessage &&
