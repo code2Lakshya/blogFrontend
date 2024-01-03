@@ -173,7 +173,6 @@ const SingleBlogPage = () => {
                         }
                         <div className="single-blog-main-content">
                             {content}
-                            <p>lorem200</p>
                         </div>
                         <div className="single-blog-category">
                             {
@@ -186,7 +185,7 @@ const SingleBlogPage = () => {
                             }
                         </div>
                     </div>
-                    <div className={`single-blog-stats ${!likes.length && !comments.length ? 'disable' : ''}`}>
+                    <div className={`single-blog-stats ${!likes.length && !comments.length ? 'disable' : ''} ${!loggedIn ? 'active':''}`}>
                         {likes.length > 0 &&
                             <p>
                                 <span>{likes.length}</span>
@@ -210,13 +209,13 @@ const SingleBlogPage = () => {
                                     :
                                     <button onClick={dislikeHandler} style={{ color: 'var(--bg-color)' }}>Like <AiOutlineDislike /></button>
                             }
+                            <button onClick={shareHandler}>Share <GoShareAndroid /></button>
                             <button
                                 onClick={() => setDeleteMessage(true)}
                                 disabled={user._id !== userDetails._id ? true : false}
                             >
-                                Delete <IoTrashBinOutline />
+                                Delete<IoTrashBinOutline />
                             </button>
-                            <button onClick={shareHandler}>Share <GoShareAndroid /></button>
                         </div>
                     }
                     <div className="single-blog-user">
@@ -227,10 +226,10 @@ const SingleBlogPage = () => {
                         </p>
                     </div>
                     {
-                        similarPosts &&
+                        similarPosts.length >0 &&
                         <SimilarPosts className='single-blog-similar' data={similarPosts} />
                     }
-                    <ProtectedComments loggedIn={loggedIn} />
+                    <ProtectedComments loggedIn={loggedIn} className='single-blog-comments' />
                 </div>
                 <Sidebar className="single-blog-sticky" />
             </Wrapper>

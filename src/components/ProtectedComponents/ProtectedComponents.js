@@ -1,11 +1,11 @@
 
 
 const ProtectedComponents = (ComponentOnLoggedin, ComponentOnLoggedout) => {
-    return ({ loggedIn }) => {
+    return ({ loggedIn ,className}) => {
         if (!loggedIn)
-            return <ComponentOnLoggedout />
+            return <ComponentOnLoggedout className={className} />
         else
-            return <ComponentOnLoggedin />
+            return <ComponentOnLoggedin className={className}/>
     }
 }
 

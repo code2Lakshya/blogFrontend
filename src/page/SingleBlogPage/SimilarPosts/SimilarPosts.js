@@ -6,20 +6,22 @@ import './SimilarPosts.css';
 
 const SimilarPosts = ({ className, data }) => {
 
-const navigate=useNavigate();
+    const navigate = useNavigate();
 
     return (
-        <div className={`similar-posts ${className ? className : ''}`}>
-        <h1>You may like these posts</h1>
-            {
-                data.map(item => {
-                    const { img_url, title,_id } = item;
-                    return (<div className="similar-post" key={_id} onClick={()=>navigate(`/post/${_id}`)}>
-                        <LazyLoadImage src={img_url || demoImg} alt='similar-blog' effect="blur" />
-                        <p>{title}</p>
-                    </div>);
-                })
-            }
+        <div className={`similar-container ${className ? className : ''}`}>
+            <h1>Similar Posts</h1>
+            <div className="similar-posts">
+                {
+                    data.map(item => {
+                        const { img_url, title, _id } = item;
+                        return (<div className="similar-post" key={_id} onClick={() => navigate(`/post/${_id}`)}>
+                            <LazyLoadImage src={img_url || demoImg} alt='similar-blog' effect="blur" />
+                            <p>{title}</p>
+                        </div>);
+                    })
+                }
+            </div>
         </div>
     );
 }

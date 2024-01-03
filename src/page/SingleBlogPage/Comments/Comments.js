@@ -9,9 +9,9 @@ import toast from "react-hot-toast";
 import Loader from "../../../components/Loader/Loader";
 import AddComment from "../AddComment/AddComment";
 import Comment from "./Comment/Comment";
+import './Comments.css';
 
-
-const CommentOnLoggedin = () => {
+const CommentOnLoggedin = ({ className }) => {
 
     const { postId } = useParams();
     const [data, setData] = useState(null);
@@ -47,7 +47,7 @@ const CommentOnLoggedin = () => {
     }, [])
 
     return (
-        <div className="commentLogin-container">
+        <div className={`commentLogin-container ${className ? className : ''}`}>
             <Wrapper className="commentLogin-wrapper">
                 <h1>Post a Comment</h1>
                 {
@@ -73,17 +73,19 @@ const CommentOnLoggedin = () => {
 export default CommentOnLoggedin;
 
 
-export const CommentOnLoggedout = () => {
+export const CommentOnLoggedout = ({ className }) => {
 
     const navigate = useNavigate();
 
     return (
-        <div className="commentLogout-container">
+        <div className={`commentLogout-container ${className ? className : ''}`}>
             <Wrapper className='commentLogout-wrapper'>
                 <h1>Post a Comment</h1>
-                <p>0 Comments</p>
-                <p>To leave a comment, click the button below to sign in on Enigma.</p>
-                <button onClick={() => navigate('/signup')}>Signup</button>
+                <div className="commentLogout-content">
+                    <p>0 Comments</p>
+                    <p>To leave a comment, click the button below to sign in on Enigma.</p>
+                    <button onClick={() => navigate('/signup')}>Signup</button>
+                </div>
             </Wrapper>
         </div>
     );

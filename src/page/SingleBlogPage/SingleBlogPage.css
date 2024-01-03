@@ -146,6 +146,9 @@
     padding: 0;
     border: none;
 }
+.single-blog-stats.active{
+    border-bottom: 2px solid #f2f2f6;
+}
 .single-blog-stats p {
     display: flex;
     gap: 3px;
@@ -193,6 +196,8 @@
     height: 80px;
     background-color: white;
     border: 2px solid #f2f2f6;
+    border-radius: 5px;
+    overflow: hidden;
 }
 .single-blog-user .lazy-load-image-background img{
     width: 100%;
@@ -209,13 +214,12 @@
     margin-left: 5px;
     color: var(--bg-color);
 }
-
-
-
-
-
-
-
+.single-blog-similar{
+    margin-bottom: 20px;
+}
+.single-blog-comments{
+    border: 2px solid #f2f2f6;
+}
 
 
 

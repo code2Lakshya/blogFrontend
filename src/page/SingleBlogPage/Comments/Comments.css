@@ -1,0 +1,36 @@
+.commentLogout-wrapper h1{
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--bg-color);
+    padding: 0 15px;
+    line-height: 34px;
+    border-bottom: 2px solid #f2f2f6;
+    font-family: var(--font-poppins);
+}
+.commentLogout-content{
+    padding: 15px;
+}
+.commentLogout-content p{
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+.commentLogout-content p:nth-child(1){
+    color: #AAAAAA;
+}
+.commentLogout-content button{
+    padding: 7px 15px;
+    font-size: 14px;
+    color: white;
+    background-color: var(--bg-color);
+    text-transform: uppercase;
+    font-weight: 400;
+    border-radius: 5px;
+    border: 1px solid var(--bg-color);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.commentLogout-content button:hover{
+    color: var(--bg-color);
+    background-color: transparent;
+}
