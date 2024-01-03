@@ -53,13 +53,14 @@
     font-size: 12px;
     align-items: center;
     gap:2px;
-    transition: color 0.3s;
+    transition: opacity 0.3s;
     cursor: pointer;
+    margin-top: 4px;
 }
 .comment-container button span{
     display: flex;
     align-items: center;
 }
 .comment-container button:hover{
-    color: var(--bg-color);
+    opacity: 0.6;
 }

@@ -223,19 +223,30 @@
 .single-blog-wrapper .noData{
     min-height: 90vh;
 }
-
-
-
-
-
-
-
-
-
-
 .single-blog-sticky {
     width: calc(30% - 10px);
     position: sticky;
     top: 15px;
     height: max-content;
+}
+@media screen and (max-width: 900px) {
+    .single-blog-wrapper{
+        flex-direction: column;
+    }
+    .single-blog-content{
+        width: 100%;
+    }
+    .single-blog-sticky{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 555px){
+    .single-blog-title h3{
+        font-size: 27px;
+    }
+    .single-blog-user{
+        flex-direction: column;
+        padding: 30px;
+        text-align: center;
+    }
 }

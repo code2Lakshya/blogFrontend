@@ -52,3 +52,23 @@
 .similar-post:hover p{
     color: var(--bg-color);
 }
+@media screen and (max-width: 700px) {
+    .similar-post .lazy-load-image-background{
+        height: 100px;
+    }
+}
+@media screen and (max-width: 555px) {
+    .similar-posts{
+        flex-direction: column;
+    }
+    .similar-post{
+        width: 100%;
+        display: flex;
+        gap:10px;
+    }
+    .similar-post .lazy-load-image-background{
+        width: 75px;
+        height: 60px;
+        flex-shrink: 0;
+    }
+}
