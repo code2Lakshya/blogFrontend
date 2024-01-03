@@ -22,6 +22,7 @@ import ProtectedComponents from "../../components/ProtectedComponents/ProtectedC
 import './SingleBlogPage.css';
 import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
 import { useScrollToTop } from "../../utils/hooks/useScrollToTop";
+import { GoShareAndroid } from "react-icons/go";
 
 const SingleBlogPage = () => {
 
@@ -32,11 +33,11 @@ const SingleBlogPage = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    useScrollToTop();
+    useScrollToTop(postId);
 
     useEffect(() => {
         fetchResponse(`/post/${postId}`);
-    }, [])
+    }, [postId])
 
     const deleteHandler = () => {
         fetchData(`/deletepost/${postId}`, {
@@ -112,6 +113,11 @@ const SingleBlogPage = () => {
             .catch((error) => console.log(error))
     }
 
+    const shareHandler = () => {
+        navigator.clipboard.writeText(process.env.REACT_APP_BASE_URL + `/post/${postId}`);
+        toast.success('Copied To Clipboard');
+    }
+
     const ProtectedComments = useMemo(() => ProtectedComponents(CommentOnLoggedin, CommentOnLoggedout), [loggedIn]);
 
     if (loader) {
@@ -127,10 +133,9 @@ const SingleBlogPage = () => {
             </div>
         );
 
-    const { categories, title, user, createdAt, content, img_url, likes } = data;
+    const { categories, title, user, createdAt, content, img_url, likes, comments } = data;
     let date = new Date(createdAt);
     date = date.getDate() + ' ' + month[date.getMonth()] + ` ` + date.getFullYear();
-    console.log(data);
 
     return (
         <div className="single-blog-page">
@@ -143,45 +148,75 @@ const SingleBlogPage = () => {
                             {categories[0]?.category}
                         </Link>
                     </div>
-                    <div className="single-blog-detail">
+                    <div className="single-blog-title">
                         <h3>{title}</h3>
                         <div className="blog-by">
-                            {
-                                user?.profile_pic?.length > 0 ?
-                                    <LazyLoadImage src={user?.profile_pic} alt={title} effect="blur" />
-                                    :
-                                    <span><FaRegUserCircle /></span>
-                            }
+                            <p>
+                                {
+                                    user?.profile_pic?.length > 0 ?
+                                        <LazyLoadImage src={user?.profile_pic} alt={title} effect="blur" />
+                                        :
+                                        <span><FaRegUserCircle /></span>
+                                }
+                                {user.username}
+                            </p>
                             <p>
                                 <span><CiClock2 /></span>
                                 {date}
                             </p>
                         </div>
+                    </div>
+                    <div className="single-blog-detail">
                         {
                             img_url?.length > 0 &&
-                            <div className="single-blog-image">
-                                <LazyLoadImage src={img_url} alt='blog' effect="blur" />
-                            </div>
+                            <LazyLoadImage src={img_url} alt='blog' effect="blur" />
                         }
-                        <div className="single-blog-content">
+                        <div className="single-blog-main-content">
                             {content}
+                            <p>lorem200</p>
                         </div>
-                        <div className="single--blog-category">
+                        <div className="single-blog-category">
                             {
-                                categories.map((item) => <span key={item._id}>{item.category}</span>)
+                                categories.map((item) => <span
+                                    key={item._id}
+                                    onClick={()=> navigate(`/category/${item._id}`)}
+                                >
+                                    {item.category}
+                                </span>)
                             }
                         </div>
                     </div>
-                    {loggedIn &&
+                    <div className={`single-blog-stats ${!likes.length && !comments.length ? 'disable' : ''}`}>
+                        {likes.length > 0 &&
+                            <p>
+                                <span>{likes.length}</span>
+                                <AiOutlineLike />
+                            </p>
+                        }
+                        {comments.length > 0 &&
+                            <p id='comment'>
+                                {comments.length}
+                                <span>Comments</span>
+                            </p>
+                        }
+                    </div>
+                    {
+                        loggedIn &&
                         <div className="single-blog-buttons">
                             {
                                 likes.findIndex(item => item.user === userDetails._id) === -1
                                     ?
                                     <button onClick={likeHandler}>Like <AiOutlineLike /></button>
                                     :
-                                    <button onClick={dislikeHandler}>Dislike <AiOutlineDislike /></button>
+                                    <button onClick={dislikeHandler} style={{ color: 'var(--bg-color)' }}>Like <AiOutlineDislike /></button>
                             }
-                            <button onClick={() => setDeleteMessage(true)}>Delete <IoTrashBinOutline /></button>
+                            <button
+                                onClick={() => setDeleteMessage(true)}
+                                disabled={user._id !== userDetails._id ? true : false}
+                            >
+                                Delete <IoTrashBinOutline />
+                            </button>
+                            <button onClick={shareHandler}>Share <GoShareAndroid /></button>
                         </div>
                     }
                     <div className="single-blog-user">
