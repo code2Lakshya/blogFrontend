@@ -1,4 +1,19 @@
-.commentLogout-wrapper h1{
+.comments-container{
+    padding: 15px;
+}
+.comments-container > p{
+    font-size: 14px;
+    text-align: center;
+    color: #939393;
+}
+.comments{
+    max-height: 350px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.commentLogout-wrapper h1,
+.commentLogin-wrapper h1 {
     font-size: 17px;
     font-weight: 600;
     color: var(--bg-color);
@@ -7,18 +22,22 @@
     border-bottom: 2px solid #f2f2f6;
     font-family: var(--font-poppins);
 }
-.commentLogout-content{
+
+.commentLogout-content {
     padding: 15px;
 }
-.commentLogout-content p{
+
+.commentLogout-content p {
     font-size: 14px;
     font-weight: 400;
     margin-bottom: 10px;
 }
-.commentLogout-content p:nth-child(1){
+
+.commentLogout-content p:nth-child(1) {
     color: #AAAAAA;
 }
-.commentLogout-content button{
+
+.commentLogout-content button {
     padding: 7px 15px;
     font-size: 14px;
     color: white;
@@ -30,7 +49,8 @@
     cursor: pointer;
     transition: all 0.3s;
 }
-.commentLogout-content button:hover{
+
+.commentLogout-content button:hover {
     color: var(--bg-color);
     background-color: transparent;
 }

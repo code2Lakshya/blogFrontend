@@ -161,11 +161,11 @@ const Form = ({ className, type }) => {
                         type === 'signup'
                             ?
                             <button type='submit' onClick={submitHandler}>
-                                Signup Now
+                                Sign Up
                             </button>
                             :
                             <button type='submit' onClick={submitHandler}>
-                                Login Now
+                                Log In
                             </button>
                 }
             </form>

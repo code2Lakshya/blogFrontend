@@ -1,0 +1,65 @@
+.comment-container{
+    margin-bottom: 15px;
+    border-bottom: 2px solid #f2f2f6;
+    padding-bottom: 10px;
+    position: relative;
+}
+.comment {
+    display: flex;
+    gap: 10px;
+}
+
+.comment .lazy-load-image-background {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid rgb(133, 131, 131);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.comment p {
+    width: 100%;
+    font-size: 13px;
+    font-weight: 300;
+    font-family: var(--font-poppins);
+    overflow-wrap: break-word;
+}
+
+.comment span {
+    display: inline-block;
+    font-weight: 600;
+    flex-shrink: 0;
+    height: max-content;
+    margin-right: 10px;
+}
+.comment-loader{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(236, 236, 236, 0.4);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+.comment-container button{
+    margin-left: 50px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: red;
+    display: flex;
+    font-size: 12px;
+    align-items: center;
+    gap:2px;
+    transition: color 0.3s;
+    cursor: pointer;
+}
+.comment-container button span{
+    display: flex;
+    align-items: center;
+}
+.comment-container button:hover{
+    color: var(--bg-color);
+}

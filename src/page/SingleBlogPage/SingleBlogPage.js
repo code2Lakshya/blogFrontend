@@ -72,7 +72,7 @@ const SingleBlogPage = () => {
             .then(response => {
                 if (response.success) {
                     toast.success('Post Successfully Liked!');
-                    setData(prev => ({ ...prev, likes: [...prev.likes, response.response] }));
+                    setData(prev => ({ ...prev, likes: [...prev?.likes, response?.response] }));
                 }
                 else {
                     console.log(response.message);
@@ -96,8 +96,8 @@ const SingleBlogPage = () => {
             .then(response => {
                 if (response.success) {
                     setData(prev => {
-                        console.log(prev.likes.filter(item => item._id !== response.response._id));
-                        return { ...prev, likes: prev.likes.filter(item => item._id !== response.response._id) }
+                        console.log(prev?.likes?.filter(item => item?._id !== response?.response?._id));
+                        return { ...prev, likes: prev?.likes?.filter(item => item?._id !== response?.response?._id) }
                     });
                     toast.success('Post Successfully Disliked!');
                 }

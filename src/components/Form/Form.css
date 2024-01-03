@@ -28,16 +28,16 @@
     font-weight: 500;
     padding: 12px;
     border-radius: 10px;
-    border: 1px solid grey;
+    border: 1px solid rgb(196, 193, 193);
 }
 .profile-field input{
     padding: 10px;
-    border: 1px solid grey;
+    border: 1px solid rgb(196, 193, 193);
     cursor: pointer;
 }
 input[type=file]::-webkit-file-upload-button{
     background-color: transparent;
-    border: 1px solid grey;
+    border: 1px solid rgb(196, 193, 193);
     padding: 3px 6px;
     font-size: 14px;
     border-radius: 3px;
@@ -58,14 +58,14 @@ input[type=file]::-webkit-file-upload-button{
     color: var(--bg-color);
 }
 .form button{
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     color: white;
     background-color: var(--bg-color);
     border: 1px solid var(--bg-color);
     padding: 13px;
     margin-top: 10px;
-    text-transform: uppercase;
+    text-transform: capitalize;
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;

@@ -1,13 +1,12 @@
 import { useState } from "react";
-import { useFetch } from "../../../utils/hooks/useFetch";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { sessionTimedOut } from "../../../utils/sessionTimedOut";
 import { setLoggedIn } from "../../../utils/redux/slices/userSlice";
 import toast from "react-hot-toast";
 import { fetchData } from "../../../utils/fetchData";
 import Loader from "../../../components/Loader/Loader";
-
+import './AddComment.css';
 
 
 const AddComment = ({ setData }) => {
@@ -21,7 +20,6 @@ const AddComment = ({ setData }) => {
 
 
     const clickHandler = () => {
-        console.log(userDetails.token);
         if (content) {
             fetchData(`/createcomment`, {
                 method: 'POST',
@@ -66,10 +64,11 @@ const AddComment = ({ setData }) => {
     return (
         <div className="addcomment-container">
             <input type='text'
-                placeholder="Write a comment..."
+                placeholder="Add a comment..."
                 name='content'
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
+                autoComplete="off"
             />
             <button onClick={clickHandler}>Post</button>
         </div>

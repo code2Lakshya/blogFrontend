@@ -56,12 +56,13 @@ const CommentOnLoggedin = ({ className }) => {
                         :
                         <div className="comments-container">
                             <AddComment setData={setData} />
-                            {!data
+                            {
+                                !data || data.length ===0
                                 ?
                                 <p>0 Comments Found</p>
                                 :
                                 <div className="comments">
-                                    {data.map(item => <Comment data={item} key={item._id} />)}
+                                    {data.map(item => <Comment data={item} key={item._id} setData={setData}/>)}
                                 </div>
                             }
                         </div>
