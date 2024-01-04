@@ -84,7 +84,7 @@ export const CommentOnLoggedout = ({ className }) => {
                 <h1>Post a Comment</h1>
                 <div className="commentLogout-content">
                     <p>0 Comments</p>
-                    <p>To leave a comment, click the button below to sign in on Enigma.</p>
+                    <p>To leave / read a comment, click the button below to sign in on Enigma.</p>
                     <button onClick={() => navigate('/signup')}>Signup</button>
                 </div>
             </Wrapper>

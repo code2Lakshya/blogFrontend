@@ -2,7 +2,7 @@ import { useEffect, useMemo } from "react";
 import Wrapper from "../../components/Wrapper/Wrapper";
 import { useFetch } from "../../utils/hooks/useFetch";
 import Loader from "../../components/Loader/Loader";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { FaRegUserCircle } from 'react-icons/fa';
 import { CiClock2 } from "react-icons/ci";
@@ -114,7 +114,7 @@ const SingleBlogPage = () => {
     }
 
     const shareHandler = () => {
-        navigator.clipboard.writeText(process.env.REACT_APP_BASE_URL + `/post/${postId}`);
+        navigator.clipboard.writeText(window.location.href);
         toast.success('Copied To Clipboard');
     }
 

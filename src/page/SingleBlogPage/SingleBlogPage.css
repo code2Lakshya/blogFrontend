@@ -186,7 +186,7 @@
 .single-blog-user{
     padding: 10px 15px;
     border: 2px solid #f2f2f6;
-    margin-block: 25px;
+    margin-block: 30px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -215,7 +215,7 @@
     color: var(--bg-color);
 }
 .single-blog-similar{
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 .single-blog-comments{
     border: 2px solid #f2f2f6;
