@@ -87,6 +87,8 @@
     aspect-ratio: 1/0.7;
     max-height: 540px;
     margin-bottom: 15px;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 .single-blog-detail .lazy-load-image-background img {
