@@ -135,7 +135,7 @@ const SingleBlogPage = () => {
 
     const { categories, title, user, createdAt, content, img_url, likes, comments } = data;
     let date = new Date(createdAt);
-    date = date.getDate() + ' ' + month[date.getMonth()] + ` ` + date.getFullYear();
+    date = date.getDate() + ' ' + month[date.getMonth() + 1] + ` ` + date.getFullYear();
 
     return (
         <div className="single-blog-page">

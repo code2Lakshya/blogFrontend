@@ -10,7 +10,7 @@ const CommonCard = ({ data, className, showContent }) => {
 
     const navigate = useNavigate();
     const date = new Date(data.createdAt);
-    const newDate = `${date.getDate()} ${month[date.getMonth()]} ${date.getFullYear()}`;
+    const newDate = `${date.getDate()} ${month[date.getMonth() + 1]} ${date.getFullYear()}`;
 
     const clickHandler = (e,type) => {
         e.stopPropagation();

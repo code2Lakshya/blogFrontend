@@ -231,6 +231,18 @@
     top: 15px;
     height: max-content;
 }
+.delete-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(122, 122, 122,0.6);
+    
+}
 @media screen and (max-width: 900px) {
     .single-blog-wrapper{
         flex-direction: column;
