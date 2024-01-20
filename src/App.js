@@ -9,6 +9,7 @@ import Footer from "./components/Footer/Footer";
 import SignupPage from "./page/SignupPage/SignupPage";
 import LoginPage from "./page/LoginPage/LoginPage";
 import SingleBlogPage from "./page/SingleBlogPage/SingleBlogPage";
+import ErrorPage from "./page/ErrorPage/ErrorPage";
 
 
 function App() {
@@ -38,7 +39,7 @@ const dispatch = useDispatch();
         <Route path='/blogs' element={<p>All Blog Page</p>} />
         <Route path='/about' element={<p>About Page</p>} />
         <Route path='/contact' element={<p>Contact Page</p>} />
-        <Route path='*' element={<p>Error Page</p>} />
+        <Route path='*' element={<ErrorPage />} />
       </Routes>
       <Footer />
     </div>
